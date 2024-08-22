@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct ToDoPlanerApp: App {
+    let persistenceController = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TasksListView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(TasksListViewModel(viewContext: persistenceController.container.viewContext))
         }
     }
 }

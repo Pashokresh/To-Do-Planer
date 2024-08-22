@@ -6,20 +6,21 @@
 //
 
 import SwiftUI
+import Combine
 
 struct TasksListView: View {
-    
+    @EnvironmentObject var viewModel: TasksListViewModel
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            List(viewModel.tasks) {
+                TaskRowView(task: $0)
+            }
         }
-        .padding()
     }
 }
 
 #Preview {
     TasksListView()
+        .environmentObject(TasksListViewModel(viewContext: PersistenceController.preview.container.viewContext))
 }
