@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  TasksListView.swift
 //  ToDoPlaner
 //
 //  Created by Pavel Martynenkov on 22.08.24.
@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TasksListView: View {
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +21,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    TasksListView()
 }
