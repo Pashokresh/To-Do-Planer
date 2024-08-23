@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct ToDoPlanerApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController = PersistenceController.preview
     
     var body: some Scene {
         WindowGroup {

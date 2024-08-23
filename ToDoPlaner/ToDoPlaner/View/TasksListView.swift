@@ -9,14 +9,28 @@ import SwiftUI
 import Combine
 
 struct TasksListView: View {
-    @EnvironmentObject var viewModel: TasksListViewModel
+    @EnvironmentObject private var viewModel: TasksListViewModel
+    @State private var selectedTaskItem: TaskItem?
+    @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
     var body: some View {
-        VStack {
-            List(viewModel.tasks) {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
+            List(viewModel.tasks, id: \.self, selection: $selectedTaskItem) {
                 TaskRowView(task: $0)
+                    .navigationTitle("ToDos")
             }
+        } detail: {
+            if let selected = selectedTaskItem {
+                Text(selected.title ?? "Hey")
+                    .navigationTitle("Details")
+            } else {
+                Text("Select task")
+                    .navigationTitle("Details")
+            }
+            
         }
+        .navigationSplitViewStyle(.balanced)
+        
     }
 }
 
