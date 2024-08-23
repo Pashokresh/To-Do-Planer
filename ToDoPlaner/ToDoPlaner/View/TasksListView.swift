@@ -12,6 +12,16 @@ struct TasksListView: View {
     @EnvironmentObject private var viewModel: TasksListViewModel
     @State private var selectedTaskItem: TaskItem?
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
+    
+    init() {
+        let coloredNavAppearance = UINavigationBarAppearance()
+        
+        coloredNavAppearance.configureWithOpaqueBackground()
+        coloredNavAppearance.backgroundColor = .systemOrange
+        
+        UINavigationBar.appearance().standardAppearance = coloredNavAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
+    }
 
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {

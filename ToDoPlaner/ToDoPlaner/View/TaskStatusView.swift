@@ -14,6 +14,7 @@ struct TaskStatusView: View {
     var body: some View {
         Text(status.title)
             .foregroundStyle(Color.white)
+            .bold()
             .multilineTextAlignment(.center)
             .frame(width: 100, height: 30)
             .background {
