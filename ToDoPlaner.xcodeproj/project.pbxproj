@@ -11,7 +11,6 @@
 		B07CF72A2C771AF6003B1107 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CF7292C771AF6003B1107 /* TasksListView.swift */; };
 		B07CF72C2C771AF7003B1107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B07CF72B2C771AF7003B1107 /* Assets.xcassets */; };
 		B07CF72F2C771AF7003B1107 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B07CF72E2C771AF7003B1107 /* Preview Assets.xcassets */; };
-		B07CF7372C772636003B1107 /* ToDoPlaner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B07CF7352C772636003B1107 /* ToDoPlaner.xcdatamodeld */; };
 		B07CF7422C772948003B1107 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CF7412C772948003B1107 /* PersistenceController.swift */; };
 		B07CF7442C773B06003B1107 /* TasksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CF7432C773B06003B1107 /* TasksListViewModel.swift */; };
 		B07CF7482C7741C6003B1107 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CF7472C7741C6003B1107 /* TaskRowView.swift */; };
@@ -24,6 +23,7 @@
 		B0AC8AAC2C7CB8EF005C00B0 /* ToDoPlanerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC8AAB2C7CB8EF005C00B0 /* ToDoPlanerTests.swift */; };
 		B0AC8AB32C7CB91A005C00B0 /* ToDoTaskDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC8AB22C7CB91A005C00B0 /* ToDoTaskDataTest.swift */; };
 		B0AC8AB52C7CBB80005C00B0 /* TestContstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC8AB42C7CBB80005C00B0 /* TestContstants.swift */; };
+		E9D339C32C7CE9FD0087B11D /* ToDoPlaner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9D339C12C7CE9FD0087B11D /* ToDoPlaner.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 		B07CF7292C771AF6003B1107 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
 		B07CF72B2C771AF7003B1107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B07CF72E2C771AF7003B1107 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B07CF7362C772636003B1107 /* ToDoPlaner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoPlaner.xcdatamodel; sourceTree = "<group>"; };
 		B07CF7412C772948003B1107 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		B07CF7432C773B06003B1107 /* TasksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListViewModel.swift; sourceTree = "<group>"; };
 		B07CF7472C7741C6003B1107 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		B0AC8AAB2C7CB8EF005C00B0 /* ToDoPlanerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPlanerTests.swift; sourceTree = "<group>"; };
 		B0AC8AB22C7CB91A005C00B0 /* ToDoTaskDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskDataTest.swift; sourceTree = "<group>"; };
 		B0AC8AB42C7CBB80005C00B0 /* TestContstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContstants.swift; sourceTree = "<group>"; };
+		E9D339C22C7CE9FD0087B11D /* ToDoPlaner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoPlaner.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 				B07CF7272C771AF6003B1107 /* ToDoPlanerApp.swift */,
 				B07CF72B2C771AF7003B1107 /* Assets.xcassets */,
 				B07CF72D2C771AF7003B1107 /* Preview Content */,
-				B07CF7352C772636003B1107 /* ToDoPlaner.xcdatamodeld */,
+				E9D339C12C7CE9FD0087B11D /* ToDoPlaner.xcdatamodeld */,
 				B07CF7412C772948003B1107 /* PersistenceController.swift */,
 				B07CF7492C774376003B1107 /* PreviewHelper.swift */,
 				B07CF7532C776E91003B1107 /* Utils.swift */,
@@ -258,8 +258,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B07CF7422C772948003B1107 /* PersistenceController.swift in Sources */,
+				E9D339C32C7CE9FD0087B11D /* ToDoPlaner.xcdatamodeld in Sources */,
 				B07CF7482C7741C6003B1107 /* TaskRowView.swift in Sources */,
-				B07CF7372C772636003B1107 /* ToDoPlaner.xcdatamodeld in Sources */,
 				B07CF72A2C771AF6003B1107 /* TasksListView.swift in Sources */,
 				B07CF74D2C77492C003B1107 /* TaskItem+CoreDataClass.swift in Sources */,
 				B07CF74E2C77492C003B1107 /* TaskItem+CoreDataProperties.swift in Sources */,
@@ -539,14 +539,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B07CF7352C772636003B1107 /* ToDoPlaner.xcdatamodeld */ = {
+		E9D339C12C7CE9FD0087B11D /* ToDoPlaner.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B07CF7362C772636003B1107 /* ToDoPlaner.xcdatamodel */,
+				E9D339C22C7CE9FD0087B11D /* ToDoPlaner.xcdatamodel */,
 			);
-			currentVersion = B07CF7362C772636003B1107 /* ToDoPlaner.xcdatamodel */;
-			name = ToDoPlaner.xcdatamodeld;
-			path = "/Users/pavelmartynenkov/Developer/my-personal-prjects/To-Do-Planer/ToDoPlaner/ToDoPlaner/ToDoPlaner.xcdatamodeld";
+			currentVersion = E9D339C22C7CE9FD0087B11D /* ToDoPlaner.xcdatamodel */;
+			path = ToDoPlaner.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
