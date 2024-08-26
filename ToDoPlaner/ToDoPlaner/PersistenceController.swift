@@ -12,7 +12,7 @@ class PersistenceController {
     
     let container: NSPersistentContainer
     
-    private init(inMemory: Bool = false) {
+    fileprivate init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "ToDoPlaner")
         
         if inMemory {
@@ -28,10 +28,27 @@ class PersistenceController {
     
     // Preview setup for SwiftUI previews
     static var preview: PersistenceController = {
-        let controller = PersistenceController(inMemory: true)
-        let viewContext = controller.container.viewContext
+        let controller = PersistencePreviewController()
+                
+        // Clean up data
+        controller.deleteAllPreviewTaskItems()
         
         // Example data for previews
+        controller.addPreviewTaskItems()
+        
+        return controller
+    }()
+}
+
+private class PersistencePreviewController: PersistenceController {
+    
+    init() {
+        super.init(inMemory: true)
+    }
+    
+    func addPreviewTaskItems() {
+        let viewContext = container.viewContext
+        
         for index in 0..<10 {
             let newTask = TaskItem(context: viewContext)
             newTask.title = "Task #\(index + 1)"
@@ -47,7 +64,18 @@ class PersistenceController {
             let nsError = error as NSError
             fatalError("Unresolved error by creating preview persistence controller \(nsError), \(nsError.localizedDescription), \(nsError.userInfo)")
         }
+    }
+    
+    func deleteAllPreviewTaskItems() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = TaskItem.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
-        return controller
-    }()
+        do {
+            try container.viewContext.execute(deleteRequest)
+            try container.viewContext.save()
+        } catch let error as NSError {
+            print("Failed to delete all tasks: \(error), \(error.userInfo)")
+        }
+        
+    }
 }

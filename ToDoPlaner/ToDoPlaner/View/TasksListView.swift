@@ -17,7 +17,7 @@ struct TasksListView: View {
         let coloredNavAppearance = UINavigationBarAppearance()
         
         coloredNavAppearance.configureWithOpaqueBackground()
-        coloredNavAppearance.backgroundColor = .systemOrange
+        coloredNavAppearance.backgroundColor = .systemGray5
         
         UINavigationBar.appearance().standardAppearance = coloredNavAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
