@@ -5,58 +5,80 @@
 ## User settings
 xcuserdata/
 
+## User-specific directories
+DerivedData/
+.idea/
+*.xcworkspace/
+
 ## Obj-C/Swift specific
 *.hmap
-
-## App packaging
 *.ipa
 *.dSYM.zip
 *.dSYM
 
-## Playgrounds
+## Skip Pods directory if you're using CocoaPods.
+## If you are using Carthage, you can ignore Carthage/Build
+Pods/
+Carthage/Build/
+Carthage/Checkouts/
+
+# Swift Package Manager
+.build/
+.swiftpm/xcode/xcshareddata/swiftpm/
+Package.resolved
+Package.pins
+SourcePackages/
+
+# Xcode automatically generated project files
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+project.xcworkspace/
+xcuserdata/
+xcdebugger/
+
+# Playgrounds
 timeline.xctimeline
 playground.xcworkspace
 
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-# Package.resolved
-# *.xcodeproj
-#
-# Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
-# hence it is not needed unless you have added a package configuration file to your project
-# .swiftpm
+# Build products
+*.app
+*.app.dSYM
+*.framework
+*.ipa
+*.dSYM.zip
+*.dSYM
 
-.build/
+# Index
+*.idx
+*.index
+*.index-temp
+*.index-backup
 
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
+# Build folder
+build/
+Build/
+DerivedData/
 
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
+# Other
+*.xcuserstate
+*.moved-aside
+*.swift-version
+*.lock
 
-Carthage/Build/
+# SwiftUI Previews
+*.preview-thumbnails
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo.
-# Instead, use fastlane to re-generate the screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
+# Asset catalogs
+*.car
+*.appiconset
 
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
+# Symbolication
+.symbols
+
+# Code signing
+*.certificate
+*.mobileprovision
+*.provisionprofile
+*.xcent
