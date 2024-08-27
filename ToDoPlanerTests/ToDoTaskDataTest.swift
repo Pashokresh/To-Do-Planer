@@ -10,13 +10,16 @@ import XCTest
 
 final class ToDoTaskDataTest: XCTestCase {
     
-    private var persistenceController: PersistenceController?
+    private var persistenceController: PersistencePreviewController?
 
-    override func setUpWithError() throws {
+    override func setUp() {
         persistenceController = PersistenceController.preview
     }
-
-    override func tearDownWithError() throws {
+    
+    override func tearDown() {
+        persistenceController?.deleteAllPreviewTaskItems()
+        persistenceController?.addPreviewTaskItems()
+        
         persistenceController = nil
     }
 
@@ -41,9 +44,14 @@ final class ToDoTaskDataTest: XCTestCase {
         newTaskItem.date = TestConstants.someFinishDate
         newTaskItem.dateCreated = Date.now
         newTaskItem.status = TestConstants.somePendingStatus
-                
+        
         result = try? viewContext.fetch(TaskItem.fetchRequest())
         XCTAssertTrue(result?.contains(where: { $0.id == TestConstants.someId }) ?? false, "New task item is not added in DB")
+        
+        
+        addTeardownBlock {
+            self.persistenceController?.deleteAllPreviewTaskItems()
+        }
     }
 
     func testPerformanceTaskItemsFetch() throws {

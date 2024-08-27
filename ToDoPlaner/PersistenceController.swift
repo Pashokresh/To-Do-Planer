@@ -27,12 +27,9 @@ class PersistenceController {
     }
     
     // Preview setup for SwiftUI previews
-    static var preview: PersistenceController = {
+    static var preview: PersistencePreviewController = {
         let controller = PersistencePreviewController()
                 
-        // Clean up data
-        controller.deleteAllPreviewTaskItems()
-        
         // Example data for previews
         controller.addPreviewTaskItems()
         
@@ -40,7 +37,7 @@ class PersistenceController {
     }()
 }
 
-private class PersistencePreviewController: PersistenceController {
+class PersistencePreviewController: PersistenceController {
     
     init() {
         super.init(inMemory: true)
