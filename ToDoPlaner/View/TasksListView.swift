@@ -10,41 +10,20 @@ import Combine
 
 struct TasksListView: View {
     @EnvironmentObject private var viewModel: TasksListViewModel
-    @State private var selectedTaskItem: TaskItem?
-    @State private var columnVisibility: NavigationSplitViewVisibility = .all
+    @Binding var selectedTaskItem: TaskItem?
     
-    init() {
-        let coloredNavAppearance = UINavigationBarAppearance()
-        
-        coloredNavAppearance.configureWithOpaqueBackground()
-        coloredNavAppearance.backgroundColor = .systemGray5
-        
-        UINavigationBar.appearance().standardAppearance = coloredNavAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
-    }
-
     var body: some View {
-        NavigationSplitView(columnVisibility: $columnVisibility) {
-            List(viewModel.tasks, id: \.self, selection: $selectedTaskItem) {
-                TaskRowView(task: $0)
-                    .navigationTitle("ToDos")
-            }
-        } detail: {
-            if let selected = selectedTaskItem {
-                Text(selected.title ?? "Hey")
-                    .navigationTitle("Details")
-            } else {
-                Text("Select task")
-                    .navigationTitle("Details")
-            }
-            
+        List(viewModel.tasks, id: \.self,
+             selection: $selectedTaskItem) {
+            TaskRowView(task: $0)
+                .navigationTitle("ToDos")
         }
-        .navigationSplitViewStyle(.balanced)
-        
     }
 }
 
 #Preview {
-    TasksListView()
-        .environmentObject(TasksListViewModel(viewContext: PersistenceController.preview.container.viewContext))
+    TasksListView(selectedTaskItem: .constant(TaskItem.init()))
+        .environmentObject(
+            TasksListViewModel(coreDataService:
+                                CoreDataService(mainContext: PersistenceController.preview.container.viewContext)))
 }

@@ -13,9 +13,9 @@ struct ToDoPlanerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TasksListView()
+            HomeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(TasksListViewModel(viewContext: persistenceController.container.viewContext))
+                .environment(\.coreDataService, CoreDataService(mainContext: persistenceController.container.viewContext))
         }
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0401FF72C806B5600A44881 /* TaskListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0401FF62C806B5600A44881 /* TaskListViewModelTests.swift */; };
+		B0401FFA2C80A39600A44881 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0401FF92C80A39600A44881 /* CoreDataService.swift */; };
+		B0401FFC2C80AC4B00A44881 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0401FFB2C80AC4B00A44881 /* HomeView.swift */; };
 		B07CF7282C771AF6003B1107 /* ToDoPlanerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CF7272C771AF6003B1107 /* ToDoPlanerApp.swift */; };
 		B07CF72A2C771AF6003B1107 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CF7292C771AF6003B1107 /* TasksListView.swift */; };
 		B07CF72C2C771AF7003B1107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B07CF72B2C771AF7003B1107 /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B0401FF62C806B5600A44881 /* TaskListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModelTests.swift; sourceTree = "<group>"; };
+		B0401FF92C80A39600A44881 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		B0401FFB2C80AC4B00A44881 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B07CF7242C771AF6003B1107 /* ToDoPlaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoPlaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07CF7272C771AF6003B1107 /* ToDoPlanerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPlanerApp.swift; sourceTree = "<group>"; };
 		B07CF7292C771AF6003B1107 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
@@ -76,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0401FF82C80A37600A44881 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B0401FF92C80A39600A44881 /* CoreDataService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		B07CF71B2C771AF6003B1107 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +111,7 @@
 		B07CF7262C771AF6003B1107 /* ToDoPlaner */ = {
 			isa = PBXGroup;
 			children = (
+				B0401FF82C80A37600A44881 /* Service */,
 				B07CF7462C773CCF003B1107 /* View */,
 				B07CF73E2C7727A8003B1107 /* Model */,
 				B07CF7452C773B0E003B1107 /* ViewModel */,
@@ -143,6 +158,7 @@
 				B07CF7292C771AF6003B1107 /* TasksListView.swift */,
 				B07CF7472C7741C6003B1107 /* TaskRowView.swift */,
 				B07CF74F2C776344003B1107 /* TaskStatusView.swift */,
+				B0401FFB2C80AC4B00A44881 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +169,7 @@
 				B0AC8AAB2C7CB8EF005C00B0 /* ToDoPlanerTests.swift */,
 				B0AC8AB22C7CB91A005C00B0 /* ToDoTaskDataTest.swift */,
 				B0AC8AB42C7CBB80005C00B0 /* TestContstants.swift */,
+				B0401FF62C806B5600A44881 /* TaskListViewModelTests.swift */,
 			);
 			path = ToDoPlanerTests;
 			sourceTree = "<group>";
@@ -258,6 +275,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B07CF7422C772948003B1107 /* PersistenceController.swift in Sources */,
+				B0401FFC2C80AC4B00A44881 /* HomeView.swift in Sources */,
+				B0401FFA2C80A39600A44881 /* CoreDataService.swift in Sources */,
 				E9D339C32C7CE9FD0087B11D /* ToDoPlaner.xcdatamodeld in Sources */,
 				B07CF7482C7741C6003B1107 /* TaskRowView.swift in Sources */,
 				B07CF72A2C771AF6003B1107 /* TasksListView.swift in Sources */,
@@ -277,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0AC8AB32C7CB91A005C00B0 /* ToDoTaskDataTest.swift in Sources */,
+				B0401FF72C806B5600A44881 /* TaskListViewModelTests.swift in Sources */,
 				B0AC8AB52C7CBB80005C00B0 /* TestContstants.swift in Sources */,
 				B0AC8AAC2C7CB8EF005C00B0 /* ToDoPlanerTests.swift in Sources */,
 			);
