@@ -43,4 +43,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environment(\.coreDataService, CoreDataService(mainContext: PersistenceController.preview.container.viewContext))
 }
