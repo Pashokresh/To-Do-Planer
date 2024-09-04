@@ -43,6 +43,53 @@ final class TaskListViewModelTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
                 
         XCTAssertFalse(viewModel?.tasks.isEmpty ?? true)
+        
+        addTeardownBlock {
+            PersistenceController.preview.deleteAllPreviewTaskItems()
+        }
+    }
+    
+    func testViewModelAddNewTask() async throws {
+        // Initial expectation for fetching tasks
+        let initialFetchExpectation = expectation(description: "Initial Fetch Tasks Expectation")
+        
+        // Fetch initial tasks
+        viewModel?.fetchTasks()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if !(self.viewModel?.tasks.isEmpty ?? true) {
+                initialFetchExpectation.fulfill()
+            }
+        }
+        
+        await fulfillment(of: [initialFetchExpectation], timeout: 5.0)
+            
+        // Assert that inital number of tasks is 10
+        XCTAssertEqual(viewModel?.tasks.count, 10, "Initial number of tasks is wrong")
+        
+        // Expectation for additing new task
+        let addTaskExpectation = self.expectation(description: "Add New Task Expectation")
+        
+        // Add a new task
+        let newTask = try await viewModel?.createTask();
+        
+        // Fetch tasks again to verify the new task was added
+        viewModel?.fetchTasks()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if let tasks = self.viewModel?.tasks, tasks.contains(where: { $0.id == newTask?.id }) {
+                        addTaskExpectation.fulfill()
+            }
+        }
+        
+        await fulfillment(of: [addTaskExpectation], timeout: 5.0)
+        
+        // Assert that new task was added
+        XCTAssertTrue(viewModel?.tasks.contains(where: { $0.id == newTask?.id }) ?? false, "New Task was not found")
+        
+        addTeardownBlock {
+            PersistenceController.preview.deleteAllPreviewTaskItems()
+        }
     }
 
     func testPerformanceExample() throws {

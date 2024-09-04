@@ -43,7 +43,7 @@ final class ToDoPlanerCoreDataServiceTests: XCTestCase {
         
         XCTAssertFalse(fetchResult?.contains(where: { $0.title == "New Task" }) ?? true)
         
-        let newTask = try await coreDataService?.createNewTask()
+        _ = try await coreDataService?.createNewTask()
         
         fetchResult = try await coreDataService?.fetchTasks(with: fetchRequest)
         

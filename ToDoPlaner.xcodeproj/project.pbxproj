@@ -27,6 +27,7 @@
 		B0AC8AAC2C7CB8EF005C00B0 /* ToDoPlanerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC8AAB2C7CB8EF005C00B0 /* ToDoPlanerTests.swift */; };
 		B0AC8AB32C7CB91A005C00B0 /* ToDoTaskDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC8AB22C7CB91A005C00B0 /* ToDoTaskDataTest.swift */; };
 		B0AC8AB52C7CBB80005C00B0 /* TestContstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC8AB42C7CBB80005C00B0 /* TestContstants.swift */; };
+		E9B170F22C8887E800C248F2 /* TaskEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B170F12C8887E800C248F2 /* TaskEditingView.swift */; };
 		E9D339C32C7CE9FD0087B11D /* ToDoPlaner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9D339C12C7CE9FD0087B11D /* ToDoPlaner.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		B0AC8AAB2C7CB8EF005C00B0 /* ToDoPlanerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPlanerTests.swift; sourceTree = "<group>"; };
 		B0AC8AB22C7CB91A005C00B0 /* ToDoTaskDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskDataTest.swift; sourceTree = "<group>"; };
 		B0AC8AB42C7CBB80005C00B0 /* TestContstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContstants.swift; sourceTree = "<group>"; };
+		E9B170F12C8887E800C248F2 /* TaskEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditingView.swift; sourceTree = "<group>"; };
 		E9D339C22C7CE9FD0087B11D /* ToDoPlaner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoPlaner.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 		B07CF7462C773CCF003B1107 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9B170F12C8887E800C248F2 /* TaskEditingView.swift */,
 				B07CF7292C771AF6003B1107 /* TasksListView.swift */,
 				B07CF7472C7741C6003B1107 /* TaskRowView.swift */,
 				B07CF74F2C776344003B1107 /* TaskStatusView.swift */,
@@ -285,6 +288,7 @@
 				B07CF72A2C771AF6003B1107 /* TasksListView.swift in Sources */,
 				B07CF74D2C77492C003B1107 /* TaskItem+CoreDataClass.swift in Sources */,
 				B07CF74E2C77492C003B1107 /* TaskItem+CoreDataProperties.swift in Sources */,
+				E9B170F22C8887E800C248F2 /* TaskEditingView.swift in Sources */,
 				B07CF7522C776D09003B1107 /* TaskItem+Extensions.swift in Sources */,
 				B07CF74A2C774376003B1107 /* PreviewHelper.swift in Sources */,
 				B07CF7502C776344003B1107 /* TaskStatusView.swift in Sources */,

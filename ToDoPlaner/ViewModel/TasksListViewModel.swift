@@ -46,4 +46,14 @@ class TasksListViewModel: ObservableObject {
             }
         }
     }
+    
+    func createTask() async throws -> TaskItem? {
+        do {
+            let newTask = try await self.coreDataService.createNewTask()
+            return newTask
+        } catch {
+            self.error = error
+            return nil
+        }
+    }
 }

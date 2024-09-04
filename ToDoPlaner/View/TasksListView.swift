@@ -16,8 +16,17 @@ struct TasksListView: View {
         List(viewModel.tasks, id: \.self,
              selection: $selectedTaskItem) {
             TaskRowView(task: $0)
-                .navigationTitle("ToDos")
         }
+             .navigationTitle("ToDos")
+             .toolbar {
+                 Button("Add") {
+                     Task {
+                         let task = try? await viewModel.createTask()
+                        viewModel.fetchTasks()
+                         selectedTaskItem = task
+                     }
+                 }
+             }
     }
 }
 
