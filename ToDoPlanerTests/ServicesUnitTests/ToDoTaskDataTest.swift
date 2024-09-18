@@ -10,10 +10,10 @@ import XCTest
 
 final class ToDoTaskDataTest: XCTestCase {
     
-    private var persistenceController: PersistencePreviewController?
+    private var persistenceController: PersistenceController?
 
-    override func setUp() {
-        persistenceController = PersistenceController.preview
+    override func setUp() async throws {
+        persistenceController = await PersistenceController.preview
     }
     
     override func tearDown() {
@@ -30,6 +30,7 @@ final class ToDoTaskDataTest: XCTestCase {
         XCTAssertEqual(result?.count, 10)
     }
     
+    @MainActor
     func testAddingSomeNewTaskItem() throws {
         guard let viewContext = persistenceController?.container.viewContext else {
             XCTFail("View Context from PersistenceController is nil")
@@ -37,17 +38,16 @@ final class ToDoTaskDataTest: XCTestCase {
         }
         
         var result = try? viewContext.fetch(TaskItem.fetchRequest())
-        XCTAssertFalse(result?.contains(where: { $0.id == TestConstants.someId }) ?? false, "New task item is already in DB")
+        XCTAssertFalse(result?.contains(where: { $0.id == someId }) ?? false, "New task item is already in DB")
         
         let newTaskItem = TaskItem(context: viewContext)
-        newTaskItem.id = TestConstants.someId
-        newTaskItem.date = TestConstants.someFinishDate
+        newTaskItem.id = someId
+        newTaskItem.date = someFinishDate
         newTaskItem.dateCreated = Date.now
-        newTaskItem.status = TestConstants.somePendingStatus
+        newTaskItem.status = pendingStatus
         
         result = try? viewContext.fetch(TaskItem.fetchRequest())
-        XCTAssertTrue(result?.contains(where: { $0.id == TestConstants.someId }) ?? false, "New task item is not added in DB")
-        
+        XCTAssertTrue(result?.contains(where: { $0.id == someId }) ?? false, "New task item is not added in DB")
         
         addTeardownBlock {
             self.persistenceController?.deleteAllPreviewTaskItems()

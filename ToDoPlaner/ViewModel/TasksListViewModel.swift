@@ -9,30 +9,28 @@ import CoreData
 import Foundation
 import Combine
 
-class TasksListViewModel: ObservableObject {
+@MainActor
+final class TasksListViewModel: ObservableObject {
     
     //MARK: Data to display
-    @Published var tasks: [TaskItem] = .init()
+    @Published var tasks: [TaskModel] = .init()
     @Published var error: Error?
     
     //MARK: Private properties for Data management
-    private var coreDataService: any CoreDataServiceProtocol
+    private let coreDataService: any CoreDataServiceProtocol
     
     // MARK: - Init method
     init(coreDataService: any CoreDataServiceProtocol) {
         self.coreDataService = coreDataService
-        
-        fetchTasks()
     }
     
     // MARK: Fetch tasks
     /// Fetches a list of `TaskItem` from DataBase sorted by the date of creation
-    func fetchTasks() {
+    func fetchTasks() async {
+        let fetchRequest: NSFetchRequest<TaskItem> = TaskItem.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \TaskItem.date, ascending: true)]
         Task {
             do {
-                let fetchRequest: NSFetchRequest<TaskItem> = TaskItem.fetchRequest()
-                fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \TaskItem.date, ascending: true)]
-                
                 let result = try await self.coreDataService.fetchTasks(with: fetchRequest)
                 
                 await MainActor.run {
@@ -47,7 +45,7 @@ class TasksListViewModel: ObservableObject {
         }
     }
     
-    func createTask() async throws -> TaskItem? {
+    func createTask() async throws -> TaskModel? {
         do {
             let newTask = try await self.coreDataService.createNewTask()
             return newTask

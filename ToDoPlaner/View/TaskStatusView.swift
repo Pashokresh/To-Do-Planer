@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskStatusView: View {
-    var status: TaskItem.Status
+    var status: TaskStatus
     var date: Date?
     
     var body: some View {

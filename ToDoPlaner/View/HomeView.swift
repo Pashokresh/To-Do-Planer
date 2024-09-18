@@ -11,7 +11,7 @@ struct HomeView: View {
     @Environment(\.coreDataService) private var coreDataService: any CoreDataServiceProtocol
     
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
-    @State private var selectedTaskItem: TaskItem?
+    @State private var selectedTaskItem: TaskModel?
     
     init() {
         let coloredNavAppearance = UINavigationBarAppearance()
@@ -29,8 +29,8 @@ struct HomeView: View {
                 .environmentObject(TasksListViewModel(coreDataService: coreDataService))
         } detail: {
             if let selected = selectedTaskItem {
-                Text(selected.title ?? "Hey")
-                    .navigationTitle("Details")
+                TaskEditingView(editedTaskItem: selected)
+                    .environmentObject(TaskEditingViewModel(coreDataService: coreDataService))
             } else {
                 Text("Select task")
                     .navigationTitle("Details")
@@ -43,5 +43,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environment(\.coreDataService, CoreDataService(mainContext: PersistenceController.preview.container.viewContext))
+        .environment(\.coreDataService, CoreDataService(persistenceController: PersistenceController.preview))
 }

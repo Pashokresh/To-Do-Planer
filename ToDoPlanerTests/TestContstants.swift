@@ -8,10 +8,12 @@
 import Foundation
 @testable import ToDoPlaner
 
-class TestConstants {
-    static let someId = UUID()
-    static let someName = "Some name"
-    static let someFinishDate = Date.init(timeIntervalSinceNow: 5230945)
-    static let somePendingStatus = TaskItem.Status.pending
-    static let someComment = "Some Task Comment"
-}
+let someId = UUID()
+let someName = "Some name"
+let someNewName = "Some new name"
+let someFinishDate = Date.init(timeIntervalSinceNow: 5230945)
+let someNewFinishDate = Date.init(timeIntervalSinceNow: 5234738)
+let pendingStatus = TaskStatus.pending
+let completeStatus = TaskStatus.complete
+let someComment = "Some Task Comment"
+let someNewComment = "Some new Comment"

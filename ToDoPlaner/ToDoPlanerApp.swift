@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct ToDoPlanerApp: App {
-    let persistenceController = PersistenceController.preview
+    let persistenceController = PersistenceController.shared
     
     var body: some Scene {
         WindowGroup {
             HomeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environment(\.coreDataService, CoreDataService(mainContext: persistenceController.container.viewContext))
+                .environment(\.coreDataService, CoreDataService(persistenceController: PersistenceController.shared))
         }
     }
 }

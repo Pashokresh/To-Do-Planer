@@ -10,7 +10,7 @@ import Combine
 
 struct TasksListView: View {
     @EnvironmentObject private var viewModel: TasksListViewModel
-    @Binding var selectedTaskItem: TaskItem?
+    @Binding var selectedTaskItem: TaskModel?
     
     var body: some View {
         List(viewModel.tasks, id: \.self,
@@ -22,7 +22,7 @@ struct TasksListView: View {
                  Button("Add") {
                      Task {
                          let task = try? await viewModel.createTask()
-                        viewModel.fetchTasks()
+                         await viewModel.fetchTasks()
                          selectedTaskItem = task
                      }
                  }
@@ -31,8 +31,8 @@ struct TasksListView: View {
 }
 
 #Preview {
-    TasksListView(selectedTaskItem: .constant(TaskItem.init()))
+    TasksListView(selectedTaskItem: .constant(TaskItem.init().transformToTaskModel()))
         .environmentObject(
             TasksListViewModel(coreDataService:
-                                CoreDataService(mainContext: PersistenceController.preview.container.viewContext)))
+                                CoreDataService(persistenceController: PersistenceController.preview)))
 }

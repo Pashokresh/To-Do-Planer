@@ -8,26 +8,17 @@
 import Foundation
 
 extension TaskItem {
-    enum Status: Int {
-        case pending = 0
-        case complete = 1
-        
-        var title: String {
-            switch self {
-            case .complete:
-                return "Complete"
-            case .pending:
-                return "Pending"
-            }
-        }
-    }
     
-    var status: Status {
+    var status: TaskStatus {
         get {
-            Status.init(rawValue: Int(statusRawValue)) ?? .pending
+            TaskStatus.init(rawValue: Int(statusRawValue)) ?? .pending
         }
         set {
             statusRawValue = Int16(newValue.rawValue)
         }
+    }
+    
+    func transformToTaskModel() -> TaskModel {
+        TaskModel(id: id, title: title, creationDate: dateCreated, completeDate: date, status: status, comment: comment)
     }
 }

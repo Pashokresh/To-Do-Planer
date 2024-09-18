@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskRowView: View {
-    let task: TaskItem
+    let task: TaskModel
     
     var body: some View {
         HStack {
@@ -21,7 +21,7 @@ struct TaskRowView: View {
                 }
                 
                 Text(
-                    [task.date?.localized(), task.comment]
+                    [task.completeDate?.localized(), task.comment]
                         .compactMap({ $0 })
                         .joined(separator: " ")
                 )
@@ -29,7 +29,7 @@ struct TaskRowView: View {
             
             Spacer()
             
-            TaskStatusView(status: task.status, date: task.date)
+            TaskStatusView(status: task.status ?? .pending, date: task.completeDate)
             
         }
     }

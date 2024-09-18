@@ -8,14 +8,15 @@
 import Foundation
 
 /// Class used to provide some data to previews and tests
-class PreviewHelper {
+struct PreviewHelper {
     /// First task item from the list of generated for preview task
-    static var task: TaskItem? {
+    @MainActor
+    static var task: TaskModel? {
         let viewContext = PersistenceController.preview.container.viewContext
         let fetchRequest = TaskItem.fetchRequest()
         fetchRequest.fetchLimit = 1
         
         let result = try? viewContext.fetch(fetchRequest)
-        return result?.first
+        return result?.first?.transformToTaskModel()
     }
 }

@@ -8,31 +8,32 @@
 import XCTest
 @testable import ToDoPlaner
 
+@MainActor
 final class TaskListViewModelTests: XCTestCase {
     
     var coreDataService: (any CoreDataServiceProtocol)?
     var viewModel: TasksListViewModel?
 
-    override func setUpWithError() throws {
+    override func setUp() async throws {
         let persistenceController = PersistenceController.preview
         persistenceController.addPreviewTaskItems()
         
-        coreDataService = CoreDataService(mainContext: persistenceController.container.viewContext)
+        coreDataService = CoreDataService(persistenceController: persistenceController)
         
         viewModel = TasksListViewModel(coreDataService: coreDataService!)
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() async throws {
         PersistenceController.preview.deleteAllPreviewTaskItems()
         
         viewModel = nil
         coreDataService = nil
     }
 
-    func testViewModelTasksFetch() throws {
+    func testViewModelTasksFetch() async throws {
         let expectation = self.expectation(description: "Fetch Tasks Expectation")
         
-        viewModel?.fetchTasks()
+        await viewModel?.fetchTasks()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if !(self.viewModel?.tasks.isEmpty ?? true) {
@@ -40,7 +41,7 @@ final class TaskListViewModelTests: XCTestCase {
             }
         }
         
-        waitForExpectations(timeout: 5.0, handler: nil)
+        await fulfillment(of: [expectation], timeout: 5.0)
                 
         XCTAssertFalse(viewModel?.tasks.isEmpty ?? true)
         
@@ -54,10 +55,10 @@ final class TaskListViewModelTests: XCTestCase {
         let initialFetchExpectation = expectation(description: "Initial Fetch Tasks Expectation")
         
         // Fetch initial tasks
-        viewModel?.fetchTasks()
+        await viewModel?.fetchTasks()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if !(self.viewModel?.tasks.isEmpty ?? true) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            if !(self?.viewModel?.tasks.isEmpty ?? true) {
                 initialFetchExpectation.fulfill()
             }
         }
@@ -71,10 +72,10 @@ final class TaskListViewModelTests: XCTestCase {
         let addTaskExpectation = self.expectation(description: "Add New Task Expectation")
         
         // Add a new task
-        let newTask = try await viewModel?.createTask();
+        let newTask = try await viewModel?.createTask()
         
         // Fetch tasks again to verify the new task was added
-        viewModel?.fetchTasks()
+        await viewModel?.fetchTasks()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if let tasks = self.viewModel?.tasks, tasks.contains(where: { $0.id == newTask?.id }) {

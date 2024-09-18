@@ -7,7 +7,7 @@
 
 import CoreData
 
-class PersistenceController {
+struct PersistenceController: Sendable {
     static let shared = PersistenceController()
     
     let container: NSPersistentContainer
@@ -27,21 +27,15 @@ class PersistenceController {
     }
     
     // Preview setup for SwiftUI previews
-    static var preview: PersistencePreviewController = {
-        let controller = PersistencePreviewController()
+    @MainActor
+    static var preview: PersistenceController = {
+        let controller = PersistenceController(inMemory: true)
                 
         // Example data for previews
         controller.addPreviewTaskItems()
         
         return controller
     }()
-}
-
-class PersistencePreviewController: PersistenceController {
-    
-    init() {
-        super.init(inMemory: true)
-    }
     
     func addPreviewTaskItems() {
         let viewContext = container.viewContext
